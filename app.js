@@ -16,6 +16,48 @@ const assignments = {
 const nameInput = document.getElementById("nameInput");
 const resultDiv = document.getElementById("result");
 
+// Simple fuzzy matching function
+function fuzzyMatch(str, pattern) {
+  const strLower = str.toLowerCase();
+  const patternLower = pattern.toLowerCase();
+
+  let patternIdx = 0;
+  let strIdx = 0;
+
+  while (patternIdx < patternLower.length && strIdx < strLower.length) {
+    if (patternLower[patternIdx] === strLower[strIdx]) {
+      patternIdx++;
+    }
+    strIdx++;
+  }
+
+  return patternIdx === patternLower.length;
+}
+
+// Calculate fuzzy match score (lower is better)
+function fuzzyScore(str, pattern) {
+  const strLower = str.toLowerCase();
+  const patternLower = pattern.toLowerCase();
+
+  let patternIdx = 0;
+  let strIdx = 0;
+  let score = 0;
+
+  while (patternIdx < patternLower.length && strIdx < strLower.length) {
+    if (patternLower[patternIdx] === strLower[strIdx]) {
+      patternIdx++;
+      score += strIdx; // Lower index matches get lower scores (better)
+    }
+    strIdx++;
+  }
+
+  if (patternIdx !== patternLower.length) {
+    return Infinity; // No match
+  }
+
+  return score;
+}
+
 nameInput.addEventListener("input", function () {
   const searchText = this.value.trim();
 
@@ -25,16 +67,16 @@ nameInput.addEventListener("input", function () {
     return;
   }
 
-  // Find a matching name in the keys of assignments.
-  // We check if the input string is a substring of any giver's name.
-  const giverName = Object.keys(assignments).find((name) =>
-    name.toLowerCase().includes(searchText.toLowerCase()),
-  );
+  // Find matching names using fuzzy search
+  const matches = Object.keys(assignments)
+    .filter((name) => fuzzyMatch(name, searchText))
+    .map((name) => ({ name, score: fuzzyScore(name, searchText) }))
+    .sort((a, b) => a.score - b.score);
 
-  if (giverName) {
+  if (matches.length > 0) {
+    const giverName = matches[0].name;
     const receiverName = assignments[giverName];
     // Display the message
-    // [user name entered (matched name)] is buying a gift for [corresponding name]
     resultDiv.innerHTML = `<strong>${giverName}</strong> is buying a gift for <strong>${receiverName}</strong>`;
   } else {
     // Show contact message if no match is found
