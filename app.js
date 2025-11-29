@@ -2,8 +2,8 @@
 // This list is fixed to ensure consistency across sessions.
 const assignments = {
   "Adam Hindman": "Kristi Radford",
-  "Kristi Radford": "Ben Buffington",
-  "Ben Buffington": "Ashlynn Hoffman",
+  "Kristi Radford": "Benjamin Buffington",
+  "Benjamin Buffington": "Ashlynn Hoffman",
   "Ashlynn Hoffman": "Lanny Hindman",
   "Lanny Hindman": "Justin Hoffman",
   "Justin Hoffman": "Linda Hindman",
