@@ -74,7 +74,8 @@ input:focus {
 .emoji {
     position: absolute;
     font-size: 2rem;
-    opacity: 0.8;
+    opacity: 0;
+    top: -100px;
     animation: float 10s infinite ease-in-out;
 }
 
@@ -131,7 +132,7 @@ input:focus {
 
 @keyframes float {
     0% {
-        transform: translateY(-150vh) rotate(0deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
     10% {
@@ -141,7 +142,7 @@ input:focus {
         opacity: 0.8;
     }
     100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(calc(100vh + 100px)) rotate(360deg);
         opacity: 0;
     }
 }
