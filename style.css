@@ -4,7 +4,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f9;
+    background-color: #d32f2f;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #d32f2f,
+        #d32f2f 40px,
+        #2e7d32 40px,
+        #2e7d32 80px
+    );
     margin: 0;
     color: #333;
 }
