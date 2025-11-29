@@ -58,3 +58,95 @@ input:focus {
     min-height: 1.5em; /* Prevents layout jump */
     color: #2e7d32; /* Festive green */
 }
+
+/* Christmas emoji decorations */
+.emoji-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: float 10s infinite ease-in-out;
+}
+
+.emoji:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 8s;
+}
+.emoji:nth-child(2) {
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 12s;
+}
+.emoji:nth-child(3) {
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 9s;
+}
+.emoji:nth-child(4) {
+    left: 40%;
+    animation-delay: 0.5s;
+    animation-duration: 11s;
+}
+.emoji:nth-child(5) {
+    left: 50%;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+}
+.emoji:nth-child(6) {
+    left: 60%;
+    animation-delay: 2.5s;
+    animation-duration: 13s;
+}
+.emoji:nth-child(7) {
+    left: 70%;
+    animation-delay: 0.8s;
+    animation-duration: 9.5s;
+}
+.emoji:nth-child(8) {
+    left: 80%;
+    animation-delay: 1.8s;
+    animation-duration: 11.5s;
+}
+.emoji:nth-child(9) {
+    left: 90%;
+    animation-delay: 2.2s;
+    animation-duration: 10.5s;
+}
+.emoji:nth-child(10) {
+    left: 15%;
+    animation-delay: 3s;
+    animation-duration: 12.5s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(-150vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}

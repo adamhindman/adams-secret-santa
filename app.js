@@ -41,3 +41,36 @@ nameInput.addEventListener("input", function () {
     resultDiv.textContent = "Name not found. Please contact Adam.";
   }
 });
+
+// Create animated Christmas emojis
+const emojiContainer = document.querySelector(".emoji-container");
+const christmasEmojis = [
+  "🎅",
+  "❄️",
+  "⛄",
+  "🎄",
+  "🎁",
+  "⭐",
+  "🔔",
+  "🦌",
+  "🤶",
+  "✨",
+];
+
+// Create 10 floating emojis
+for (let i = 0; i < 10; i++) {
+  const emoji = document.createElement("div");
+  emoji.className = "emoji";
+  emoji.textContent = christmasEmojis[i % christmasEmojis.length];
+
+  // Randomize horizontal position
+  emoji.style.left = Math.random() * 100 + "%";
+
+  // Randomize animation delay
+  emoji.style.animationDelay = Math.random() * 5 + "s";
+
+  // Randomize animation duration
+  emoji.style.animationDuration = 8 + Math.random() * 6 + "s";
+
+  emojiContainer.appendChild(emoji);
+}
