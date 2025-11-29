@@ -17,10 +17,10 @@ const nameInput = document.getElementById("nameInput");
 const resultDiv = document.getElementById("result");
 
 nameInput.addEventListener("input", function () {
-  const searchText = this.value.trim().toLowerCase();
+  const searchText = this.value.trim();
 
-  // Clear result if input is too short or empty
-  if (searchText.length < 2) {
+  // Clear result if input is empty
+  if (searchText.length === 0) {
     resultDiv.textContent = "";
     return;
   }
@@ -28,7 +28,7 @@ nameInput.addEventListener("input", function () {
   // Find a matching name in the keys of assignments.
   // We check if the input string is a substring of any giver's name.
   const giverName = Object.keys(assignments).find((name) =>
-    name.toLowerCase().includes(searchText),
+    name.toLowerCase().includes(searchText.toLowerCase()),
   );
 
   if (giverName) {
@@ -37,11 +37,7 @@ nameInput.addEventListener("input", function () {
     // [user name entered (matched name)] is buying a gift for [corresponding name]
     resultDiv.innerHTML = `<strong>${giverName}</strong> is buying a gift for <strong>${receiverName}</strong>`;
   } else {
-    // Show contact message if no match is found after typing enough characters
-    if (searchText.length >= 3) {
-      resultDiv.textContent = "Name not found. Please contact Adam.";
-    } else {
-      resultDiv.textContent = "Searching...";
-    }
+    // Show contact message if no match is found
+    resultDiv.textContent = "Name not found. Please contact Adam.";
   }
 });
