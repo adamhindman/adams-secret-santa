@@ -37,8 +37,11 @@ nameInput.addEventListener("input", function () {
     // [user name entered (matched name)] is buying a gift for [corresponding name]
     resultDiv.innerHTML = `<strong>${giverName}</strong> is buying a gift for <strong>${receiverName}</strong>`;
   } else {
-    // Optional: clear or show a "not found" message.
-    // Clearing is often cleaner for partial matches that haven't resolved yet.
-    resultDiv.textContent = "Searching...";
+    // Show contact message if no match is found after typing enough characters
+    if (searchText.length >= 3) {
+      resultDiv.textContent = "Name not found. Please contact Adam.";
+    } else {
+      resultDiv.textContent = "Searching...";
+    }
   }
 });
